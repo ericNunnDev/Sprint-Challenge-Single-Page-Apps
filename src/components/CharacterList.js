@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import CharacterCard from './CharacterCard';
-
-import Axios from 'axios';
+import axios from 'axios';
 
 export default function CharacterList() {
   const [chars, setChars] = useState([]);
 
   useEffect(() => {
     const getChars = () => {
-    Axios
+    axios
     .get(`https://rickandmortyapi.com/api/character/`)
     .then(res => {
       setChars(res.data)
@@ -19,7 +18,7 @@ export default function CharacterList() {
   }
     
     getChars()//  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+  }, [chars]);
 
   return (
     <section className="character-list">

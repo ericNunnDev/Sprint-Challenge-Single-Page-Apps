@@ -26,12 +26,14 @@ const CharacterCard = props => {
   return (
     <CharacterWrapper>
       <h2>{name}</h2>
-      <p>{status}</p>
-      <p>{species}</p>
+      <p>Status: {status}</p>
+      <p>Species {species}</p>
     </CharacterWrapper>
   );
 }
 
 const CharacterWrapper = styled.div`
-
+  border: 1px solid #999;
 `
+
+export default CharacterCard;

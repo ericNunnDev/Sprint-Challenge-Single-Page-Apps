@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import CharacterCard from './CharacterCard';
 import axios from 'axios';
 
@@ -11,7 +10,7 @@ const CharacterList = props => {
     axios
     .get(`https://rickandmortyapi.com/api/character/`)
     .then(res => {
-      setChars(res.data)
+      setChars(res.data.results);
     })
     .catch(e => {
       console.log(e)
@@ -22,13 +21,11 @@ const CharacterList = props => {
   }, []);
 
   return (
-    <section className="character-list">
+    <div className='character-list'>
       {chars.map(char => (
-        <Link to={`/character/${char.id}`}>
-        <CharacterCard key={char.id} char={char} />
-        </Link>
+        <CharacterCard {...props} char={char} />
       ))}
-    </section>
+    </div>
   );
 }
 

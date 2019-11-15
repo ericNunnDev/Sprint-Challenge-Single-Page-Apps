@@ -1,39 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 
 const CharacterCard = props => {
-  const [char, setChar] = useState(null);
-
-  useEffect(() => {
-    const id = props.match.params.id;
-
-    axios
-    .get(`https://rickandmortyapi.com/api/character/${id}`)
-    .then(res => {
-      setChar(res.data);
-    })
-    .catch(e => {
-      console.log(e);
-    });
-  }, []);
-
-  if (char === null) {
-    return <div>Loading Character...</div>
-  }
-
-  const { name, status, species } = char;
   return (
-    <CharacterWrapper>
-      <h2>{name}</h2>
-      <p>Status: {status}</p>
-      <p>Species {species}</p>
+    <CharacterWrapper key={props.char.id}>
+      <Avatar src={props.char.image} />
+      <h2>{props.char.name}</h2>
+      <p>Status: {props.char.status}</p>
+      <p>Species: {props.char.species}</p>
     </CharacterWrapper>
   );
 }
 
 const CharacterWrapper = styled.div`
   border: 1px solid #999;
+  margin: 5px auto;
+  width: 50%;
+`
+const Avatar = styled.img`
+  border-radius: 5px;
+  padding-top: 10px;
 `
 
 export default CharacterCard;

@@ -1,17 +1,23 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import img from '../images/rick-morty.jpg'
+import styled from 'styled-components';
 
-export default function WelcomePage() {
+export const WelcomePage = () => {
   return (
-    <section className="welcome-page">
+    <section className='welcome-page'>
       <header>
         <h1>Welcome to the ultimate fan site!</h1>
-        <img
-          className="main-img"
-          src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-          alt="rick"
+        <WelcomeImage
+          className='main-img'
+          src={img}
+          alt='rick'
         />
       </header>
     </section>
   );
 }
+
+const WelcomeImage = styled.img`
+  max-width: 100%;
+`
+export default WelcomePage;

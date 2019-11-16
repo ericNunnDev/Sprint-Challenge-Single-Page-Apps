@@ -10,6 +10,7 @@ const SearchForm = () => {
     axios
     .get(`https://rickandmortyapi.com/api/character/`)
     .then(res => {
+      console.log(res.data.results)
       const characters = res.data.results.filter(character => 
         character.name.toLowerCase().includes(search.toLowerCase())
       );

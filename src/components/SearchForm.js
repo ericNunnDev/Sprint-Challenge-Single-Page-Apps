@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CharacterCard from './CharacterCard';
 import axios from 'axios';
 
 const SearchForm = () => {
@@ -33,14 +34,9 @@ const SearchForm = () => {
        <button type='submit'>Search</button>
      </form>
      <div>
-       {results.map(char => {
-         return (
-        <div>
-         <img src={char.image} />
-         <h2>{char.name}</h2>
-        </div>
-         )
-       })}
+     {results.map(char => (
+        <CharacterCard char={char} />
+      ))}
      </div>
     </section>
   );

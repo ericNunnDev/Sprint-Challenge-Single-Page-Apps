@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import CharacterCard from './CharacterCard';
 import SearchForm from './SearchForm';
 import axios from 'axios';
 
@@ -23,10 +22,7 @@ const CharacterList = props => {
 
   return (
     <div className='character-list'>
-      <SearchForm />
-      {chars.map(char => (
-        <CharacterCard {...props} char={char} />
-      ))}
+      <SearchForm chars={chars} />
     </div>
   );
 }
